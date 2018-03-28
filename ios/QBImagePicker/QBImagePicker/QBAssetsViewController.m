@@ -542,6 +542,9 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         }
 
         return footerView;
+    } else if (kind == UICollectionElementKindSectionHeader) {
+        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        return header;
     }
 
     return nil;

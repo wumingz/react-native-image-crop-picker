@@ -267,6 +267,12 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     return 1;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *header = [UIView new];
+    header.backgroundColor = [UIColor whiteColor];
+    return header;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.assetCollections.count;

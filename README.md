@@ -108,7 +108,6 @@ ImagePicker.clean().then(() => {
 | freeStyleCropEnabled (android only)      |        bool (default false)        | Enables user to apply custom rectangle area for cropping |
 | cropperToolbarTitle                     |        string (default `Edit Photo`)     | When cropping image, determines the title of Toolbar. |
 | cropperCircleOverlay                    |           bool (default false)           | Enable or disable circular cropping mask. |
-| disableCropperColorSetters (android only)|           bool (default false)           | When cropping image, disables the color setters for cropping library. |
 | minFiles (ios only)                     |            number (default 1)            | Min number of files to select when using `multiple` option |
 | maxFiles (ios only)                     |            number (default 5)            | Max number of files to select when using `multiple` option |
 | waitAnimationEnd (ios only)             |           bool (default true)            | Promise will resolve/reject once ViewController `completion` block is called |
@@ -173,9 +172,9 @@ After this edit Podfile. Example content is following:
 ```bash
 platform :ios, '8.0'
 
-target '<project_name>' do
-  # this is very important to have!
+target 'example' do
   rn_path = '../node_modules/react-native'
+
   pod 'yoga', path: "#{rn_path}/ReactCommon/yoga/yoga.podspec"
   pod 'React', path: rn_path, subspecs: [
     'Core',
@@ -194,8 +193,6 @@ target '<project_name>' do
   pod 'RNImageCropPicker', :path =>  '../node_modules/react-native-image-crop-picker'
 end
 
-# very important to have, unless you removed React dependencies for Libraries 
-# and you rely on Cocoapods to manage it
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == "React"
